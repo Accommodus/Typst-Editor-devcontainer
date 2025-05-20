@@ -1,4 +1,4 @@
-# LaTeX–Pandoc Editor for VSCode Dev Container
+# LaTeX-Pandoc Editor for VSCode Dev Container
 
 ## Features
 

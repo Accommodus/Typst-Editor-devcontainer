@@ -2,7 +2,7 @@ name: Docker
 
 on:
   push:
-    branches: [ "main" ]
+    branches: []
     paths:
       - 'Dockerfile'
       - '.github/workflows/docker-publish.yml'
@@ -11,7 +11,7 @@ on:
       - 'v*.*.*'
       
   pull_request:
-    branches: [ "main" ]
+    branches: []
     paths:
       - 'Dockerfile'
       - '.github/workflows/docker-image.yml'

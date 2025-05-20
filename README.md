@@ -60,7 +60,7 @@ If you want to use more than one Dev Container in your project (for example, one
    git submodule update --init --recursive
    ```
    
-1. When opening the project in VSCode, select the desired Dev Container configuration from the list.
+1. When reopening the project in a remote container, select the desired Dev Container configuration from the list.
 
 ## Usage
 1. Open your project folder in Visual Studio Code.

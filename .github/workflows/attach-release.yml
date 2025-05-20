@@ -1,0 +1,40 @@
+name: Attach .devcontainer.json on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  attach-devcontainer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check for devcontainer.json changes
+        id: check
+        shell: bash
+        run: |
+          TAG=${GITHUB_REF##*/}
+          PREV_TAG=$(git tag --sort=-creatordate | grep -B1 "^${TAG}$" | head -n1)
+          if [ -z "$PREV_TAG" ] || git diff --name-only "$PREV_TAG" "$TAG" | grep -q '^devcontainer.json$'; then
+            echo "::set-output name=changed::true"
+          else
+            echo "::set-output name=changed::false"
+          fi
+
+      - name: Prepare .devcontainer.json
+        if: steps.check.outputs.changed == 'true'
+        run: cp devcontainer.json .devcontainer.json
+
+      - name: Upload .devcontainer.json to Release
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: .devcontainer.json
+          asset_name: .devcontainer.json
+          asset_content_type: application/json

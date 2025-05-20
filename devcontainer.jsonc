@@ -28,6 +28,7 @@
 					"*.tex": "latex"
 				},
 				"latex-workshop.formatting.latex": "latexindent",
+                                "latex-workshop.latex.outDir": "%TMPDIR%",
 				// source: https://paulwintz.com/latex-in-vscode/
 				"latex-workshop.view.pdf.viewer": "tab",
 				"latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",

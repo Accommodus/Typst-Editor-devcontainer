@@ -2,9 +2,9 @@
   // get tag variable from .env
   "runArgs": [
     "--env-file", ".env"
-  ]
-	"name": "Latex Editor",
-	"image": "ghcr.io/Accommodus/pandoc-latex-chktex:${localEnv:IMAGE_TAG:latest}",
+  ],
+	"name": "Latex - Pandoc Editor",
+	"image": "bookworm-slim",
 	"features": {
 		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
 		"ghcr.io/devcontainers/features/git:1": {},

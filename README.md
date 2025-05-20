@@ -9,14 +9,14 @@
   * [LaTeX](https://www.latex-project.org/): Typesetting system with `chktex` for style checking
   * [Git](https://git-scm.com/): Version control system
     
-* **VS Code Extensions**:
+* **VSCode Extensions**:
   * LaTeX Workshop by James Yu
   * LaTeX by Mathematic Inc
   * LTeX – LanguageTool grammar/spell checking by Julian Valentin
 
 * **Preconfigured Settings**:
   * Automatic cleaning of auxiliary files
-  * PDF viewer integration within VS Code
+  * PDF viewer integration within VSCode
   * IntelliSense for LaTeX packages
 Absolutely, here’s a version with section titles that clarify the intended use cases:
 
@@ -51,7 +51,7 @@ If you want to use more than one Dev Container in your project (for example, one
    ```bash
    git clone https://github.com/Accommodus/pandoc-latex-devcontainer.git .devcontainer/latex-pandoc
    ```
-3. When opening the project in VS Code, select the desired Dev Container configuration from the list.
+3. When opening the project in VSCode, select the desired Dev Container configuration from the list.
 
 ## Usage
 1. Open your project folder in Visual Studio Code.

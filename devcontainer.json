@@ -4,6 +4,7 @@
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
         "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers-extra/features/typst:1": {},
         "ghcr.io/prulloac/devcontainer-features/latex:1": {
             "packages": "chktex"
         }
@@ -13,7 +14,8 @@
             "extensions": [
                 "james-yu.latex-workshop",
                 "mathematic.vscode-latex",
-                "valentjn.vscode-ltex"
+                "valentjn.vscode-ltex",
+                "myriad-dreamin.tinymist"
             ],
             "settings": {
                 // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json

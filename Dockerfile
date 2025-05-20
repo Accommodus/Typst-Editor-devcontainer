@@ -1,4 +1,4 @@
-FROM pandoc/latex:
+FROM pandoc/latex
 
 # install chktex
 RUN apt-get update \

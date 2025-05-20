@@ -18,25 +18,23 @@
   * Automatic cleaning of auxiliary files
   * PDF viewer integration within VSCode
   * IntelliSense for LaTeX packages
-Absolutely, here’s a version with section titles that clarify the intended use cases:
-
 
 ## Installation
 
-The structure of this repository is designed so you can add it as a submodule or as a subdirectory within another repository.
+The structure of this repository is designed to be most effectively used as a submodule or as a subdirectory within a larger repository or project.
 
 ### If This Is Your Only Dev Container
 
 Add this Dev Container directly as your `.devcontainer` folder:
 
 1. Navigate to your project’s root directory.
-2. Add the Dev Container as a submodule:
-
+  
+1. Add the Dev Container as a submodule:
    ```bash
-   git submodule add https://github.com/Accommodus/pandoc-latex-devcontainer.git .devcontainer
+   git submodule add https://github.com/Accommodus/LaTeX-Pandoc_Editor_devcontainer.git .devcontainer
    ```
-3. Initialize and update the submodule:
-
+   
+1. Initialize and update the submodule:
    ```bash
    git submodule update --init --recursive
    ```
@@ -45,13 +43,24 @@ Add this Dev Container directly as your `.devcontainer` folder:
 
 If you want to use more than one Dev Container in your project (for example, one for running code and this one for writing the associated paper):
 
-1. Create a subdirectory within `.devcontainer`, e.g., `.devcontainer/latex-pandoc`.
-2. Clone the Dev Container repository into this subdirectory:
-
+1. Navigate to your project’s root directory.
+   
+1. `cd` into your project’s `.devcontainer` directory
    ```bash
-   git clone https://github.com/Accommodus/pandoc-latex-devcontainer.git .devcontainer/latex-pandoc
+   cd .devcontainer
    ```
-3. When opening the project in VSCode, select the desired Dev Container configuration from the list.
+
+1. Add the Dev Container as a submodule within this subdirectory:
+   ```bash
+   git submodule add https://github.com/Accommodus/LaTeX-Pandoc_Editor_devcontainer.git
+   ```
+   
+1. Initialize and update the submodule:
+   ```bash
+   git submodule update --init --recursive
+   ```
+   
+1. When opening the project in VSCode, select the desired Dev Container configuration from the list.
 
 ## Usage
 1. Open your project folder in Visual Studio Code.

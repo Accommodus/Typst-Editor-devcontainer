@@ -1,0 +1,54 @@
+{
+    "name": "Latex - Pandoc Editor",
+    "image": "debian:bookworm-slim",
+    "features": {
+        "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/prulloac/devcontainer-features/latex:1": {
+            "packages": "chktex"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "james-yu.latex-workshop",
+                "mathematic.vscode-latex",
+                "valentjn.vscode-ltex"
+            ],
+            "settings": {
+                // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json
+                // General settings
+                "files.defaultLanguage": "latex",
+                "latex-workshop.latex.clean.subfolder.enabled": true,
+                "latex-workshop.latex.autoClean.run": "onBuilt",
+                "editor.formatOnSave": true,
+                "files.associations": {
+                    "*.tex": "latex"
+                },
+                "latex-workshop.formatting.latex": "latexindent",
+                "latex-workshop.latex.outDir": "%TMPDIR%",
+                // source: https://paulwintz.com/latex-in-vscode/
+                "latex-workshop.view.pdf.viewer": "tab",
+                "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+                "latex-workshop.view.pdf.color.dark.backgroundColor": "#809080",
+                "latex-workshop.view.pdf.color.light.backgroundColor": "#809080",
+                "latex-workshop.view.pdf.color.dark.pageBorderColor": "#809080",
+                "latex-workshop.view.pdf.color.light.pageBorderColor": "#809080",
+                "latex-workshop.intellisense.package.dirs": [
+                    "packages",
+                    "%WORKSPACE_FOLDER%/packages"
+                ],
+                "latex-workshop.intellisense.update.aggressive.enabled": true,
+                // List additional packages for IntelliSense
+                "latex-workshop.intellisense.package.extra": [],
+                "ltex.additionalRules.enablePickyRules": true,
+                "ltex.diagnosticSeverity": {
+                    "default": "information",
+                    "spelling": "warning",
+                    "grammar": "information",
+                    "style": "hint"
+                }
+            }
+        }
+    }
+}

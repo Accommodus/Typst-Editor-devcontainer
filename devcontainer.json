@@ -6,7 +6,9 @@
 	"name": "Latex Editor",
 	"image": "ghcr.io/Accommodus/pandoc-latex-chktex:${localEnv:IMAGE_TAG:latest}",
 	"features": {
-		"ghcr.io/devcontainers/features/git:1": "latest"
+		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/prulloac/devcontainer-features/latex:1": {"packages":"chktex"}
 	},
 	"customizations": {
 		"vscode": {

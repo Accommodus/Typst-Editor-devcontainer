@@ -1,5 +1,5 @@
 {
-    "name": "LaTeX–Pandoc Editor",
+    "name": "LaTeX-Pandoc Editor",
     "image": "debian:bookworm-slim",
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},

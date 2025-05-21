@@ -8,11 +8,13 @@
   * [Pandoc](https://pandoc.org/): Universal document converter
   * [LaTeX](https://www.latex-project.org/): Typesetting system with `chktex` for style checking
   * [Git](https://git-scm.com/): Version control system
+  * [Typst](https://typst.app/): Markup-based typesetting for technical documents
     
 * **VSCode Extensions**:
   * LaTeX Workshop by James Yu
   * LaTeX by Mathematic Inc
   * LTeX – LanguageTool grammar/spell checking by Julian Valentin
+  * Tinymist Typst by Myriad Dreamin
 
 * **Preconfigured Settings**:
   * Automatic cleaning of auxiliary files

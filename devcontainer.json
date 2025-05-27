@@ -16,6 +16,9 @@
                 "valentjn.vscode-ltex"
             ],
             "settings": {
+                "editor.fontSize": 16,
+                "editor.lineHeight": 2,
+                
                 // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json
                 // General settings
                 "files.defaultLanguage": "latex",

@@ -21,13 +21,13 @@
                 
                 // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json
                 // General settings
-                "files.defaultLanguage": "latex",
-                "latex-workshop.latex.clean.subfolder.enabled": true,
-                "latex-workshop.latex.autoClean.run": "onBuilt",
                 "editor.formatOnSave": true,
                 "files.associations": {
                     "*.tex": "latex"
                 },
+                // Latex Workshop settings
+                "latex-workshop.latex.clean.subfolder.enabled": true,
+                "latex-workshop.latex.autoClean.run": "onBuilt",
                 "latex-workshop.formatting.latex": "latexindent",
                 "latex-workshop.latex.outDir": "%TMPDIR%",
                 // source: https://paulwintz.com/latex-in-vscode/
@@ -42,8 +42,19 @@
                     "%WORKSPACE_FOLDER%/packages"
                 ],
                 "latex-workshop.intellisense.update.aggressive.enabled": true,
-                // List additional packages for IntelliSense
-                "latex-workshop.intellisense.package.extra": [],
+                "latex-workshop.intellisense.package.extra": [], // List additional packages for IntelliSense
+                // LTeX settings
+                "ltex.enabled":[
+                    "typst", 
+                    "context", 
+                    "context.tex", 
+                    "html", 
+                    "latex", 
+                    "markdown", 
+                    "org",
+                    "restructuredtext",
+                    "rsweave"
+                ],
                 "ltex.additionalRules.enablePickyRules": true,
                 "ltex.diagnosticSeverity": {
                     "default": "information",

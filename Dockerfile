@@ -10,7 +10,7 @@ FROM ${BASE_IMAGE}
 RUN apt-get update \
     && apt-get install -y --no-install-recommends fontconfig \
     && rm -rf /var/lib/apt/lists/*
+    
 WORKDIR /usr/local/share/fonts
-
-RUN --mount=type=bind,from=builder,source=/root/fonts,target=/usr/local/share/fonts \
+RUN --mount=type=bind,from=builder,source=/root/install,target=/usr/local/share/fonts \
     fc-cache -f -v

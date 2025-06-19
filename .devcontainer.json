@@ -14,10 +14,15 @@
         "vscode": {
             "extensions": [],
             "settings": {
-                "editor.fontSize": 16,
                 "editor.lineHeight": 2,
                 "editor.formatOnSave": true,
-                "editor.wordWrap": "on"
+                "editor.wordWrap": "on",
+                // font settings:
+                "editor.fontSize": 16,
+                "editor.fontFamily": "'Monaspace Xenon', 'Droid Sans Mono', 'monospace', monospace",
+                "editor.fontLigatures": true,
+                "editor.fontWeight": 500,
+                "editor.fontVariations": "'wdth' 105"
             }
         }
     }

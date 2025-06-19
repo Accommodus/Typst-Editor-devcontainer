@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="rust:bookworm"
+ARG BASE_IMAGE="debian:bookworm"
 ARG FONT_HOLDING_PATH="/root/install"
 ARG FONT_DESTINATION_PATH="/usr/local/share/fonts"
 
@@ -19,6 +19,4 @@ RUN apt-get update \
     
 WORKDIR ${FONT_DESTINATION_PATH}
 RUN --mount=type=bind,from=builder,source=${FONT_HOLDING_PATH},target=${FONT_DESTINATION_PATH} \
-    fc-cache -f -v
-
-RUN cargo install typst-wasm-protocol
+    fc-cache -f

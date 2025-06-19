@@ -18,5 +18,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
     
 WORKDIR ${FONT_DESTINATION_PATH}
-RUN --mount=type=bind,from=builder,source=${FONT_HOLDING_PATH},target=${FONT_DESTINATION_PATH} \
-    fc-cache -f
+ADD https://github.com/githubnext/monaspace.git:fonts/otf/ ./
+COPY from=builder ${FONT_HOLDING_PATH} ./
+RUN fc-cache -f

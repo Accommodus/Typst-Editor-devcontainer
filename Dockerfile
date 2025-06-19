@@ -10,9 +10,13 @@ WORKDIR ${WORKSPACE}
 ADD https://github.com/google/fonts/archive/main.tar.gz gfonts.tar.gz
 RUN tar -xf gfonts.tar.gz
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends unzip \
+ADD https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip mona.zip
+RUN unzip mona.zip
+
 WORKDIR ${FONT_HOLDING_PATH}
-COPY ./fonts-main/ofl/ ./goog/
-ADD https://github.com/githubnext/monaspace.git#:/fonts/otf/ ./mona/
+RUN mv ${WORKSPACE}/fonts-main/ofl/ ./goog/
 
 FROM ${BASE_IMAGE}
 ARG FONT_HOLDING_PATH

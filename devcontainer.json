@@ -1,19 +1,14 @@
 {
-    "name": "LaTeX-Pandoc Editor",
+    "name": "Typst Editor",
     "image": "debian:bookworm-slim",
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/michidk/devcontainers-features/typst:1": {},
-        "ghcr.io/prulloac/devcontainer-features/latex:1": {
-            "packages": "chktex"
-        }
     },
     "customizations": {
         "vscode": {
             "extensions": [
-                "mathematic.vscode-latex",
-                "valentjn.vscode-ltex"
             ],
             "settings": {
                 "editor.fontSize": 16,
@@ -22,46 +17,7 @@
                 // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json
                 // General settings
                 "editor.formatOnSave": true,
-                "files.associations": {
-                    "*.tex": "latex"
-                },
-                // Latex Workshop settings
-                "latex-workshop.latex.clean.subfolder.enabled": true,
-                "latex-workshop.latex.autoClean.run": "onBuilt",
-                "latex-workshop.formatting.latex": "latexindent",
-                "latex-workshop.latex.outDir": "%TMPDIR%",
-                // source: https://paulwintz.com/latex-in-vscode/
-                "latex-workshop.view.pdf.viewer": "tab",
-                "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-                "latex-workshop.view.pdf.color.dark.backgroundColor": "#809080",
-                "latex-workshop.view.pdf.color.light.backgroundColor": "#809080",
-                "latex-workshop.view.pdf.color.dark.pageBorderColor": "#809080",
-                "latex-workshop.view.pdf.color.light.pageBorderColor": "#809080",
-                "latex-workshop.intellisense.package.dirs": [
-                    "packages",
-                    "%WORKSPACE_FOLDER%/packages"
-                ],
-                "latex-workshop.intellisense.update.aggressive.enabled": true,
-                "latex-workshop.intellisense.package.extra": [], // List additional packages for IntelliSense
-                // LTeX settings
-                "ltex.enabled":[
-                    "typst", 
-                    "context", 
-                    "context.tex", 
-                    "html", 
-                    "latex", 
-                    "markdown", 
-                    "org",
-                    "restructuredtext",
-                    "rsweave"
-                ],
-                "ltex.additionalRules.enablePickyRules": true,
-                "ltex.diagnosticSeverity": {
-                    "default": "information",
-                    "spelling": "warning",
-                    "grammar": "information",
-                    "style": "hint"
-                }
+                "editor.wordWrap": "on"
             }
         }
     }

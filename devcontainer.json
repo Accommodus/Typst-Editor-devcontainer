@@ -1,21 +1,21 @@
 {
     "name": "Typst Editor",
-    "image": "debian:bookworm-slim",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/michidk/devcontainers-features/typst:1": {},
+        "ghcr.io/devcontainers/features/rust:1": {},
+        "ghcr.io/lee-orr/rusty-dev-containers/wasm32-unknown-unknown:0": {}
     },
     "customizations": {
         "vscode": {
-            "extensions": [
-            ],
+            "extensions": [],
             "settings": {
                 "editor.fontSize": 16,
                 "editor.lineHeight": 2,
-                
-                // source: https://github.com/qdm12/latexdevcontainer/blob/master/.devcontainer/devcontainer.json
-                // General settings
                 "editor.formatOnSave": true,
                 "editor.wordWrap": "on"
             }

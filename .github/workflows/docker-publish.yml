@@ -43,7 +43,7 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-            imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            imageName: typst-editor-devcontainer
             cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             push: always
             platform: linux/amd64,linux/arm64 

@@ -44,6 +44,7 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
             imageName: typst-editor-devcontainer
+            subFolder: src
             cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             push: always
             platform: linux/amd64,linux/arm64 

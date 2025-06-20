@@ -12,7 +12,12 @@
     },
     "customizations": {
         "vscode": {
-            "extensions": [],
+            "extensions": [
+                "calebfiggers.typst-companion",
+                "surv.typst-math",
+                "orangex4.vscode-typst-sync",
+                "streetsidesoftware.code-spell-checker"
+            ],
             "settings": {
                 "editor.lineHeight": 2,
                 "editor.formatOnSave": true,
@@ -22,7 +27,7 @@
                 "editor.fontFamily": "'Monaspace Xenon', 'Droid Sans Mono', 'monospace', monospace",
                 "editor.fontLigatures": true,
                 "editor.fontWeight": 500,
-                "editor.fontVariations": "'wdth' 105"
+                //"editor.fontVariations": "'wdth' 105"
             }
         }
     }

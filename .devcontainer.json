@@ -26,8 +26,7 @@
                 "editor.fontSize": 16,
                 "editor.fontFamily": "'Monaspace Xenon', 'Droid Sans Mono', 'monospace', monospace",
                 "editor.fontLigatures": true,
-                "editor.fontWeight": 500,
-                //"editor.fontVariations": "'wdth' 105"
+                "editor.fontWeight": 500
             }
         }
     }

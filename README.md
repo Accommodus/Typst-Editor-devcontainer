@@ -14,10 +14,10 @@ Add this Dev Container directly as your `.devcontainer` folder:
 
 1. Navigate to your project’s root directory.
 
-1. Create the `.devcontainer/devcontainer.json` file with the following content:
+1. Create the config file with the following content:
 
    ```bash
-   mkdir -p .devcontainer && echo '{ "image": "ghcr.io/accommodus/typst-editor-devcontainer:latest" }' > .devcontainer/devcontainer.json
+   echo '{ "image": "ghcr.io/accommodus/typst-editor-devcontainer:latest" }' > .devcontainer.json
    ```
 
 ### If You Want Multiple Dev Containers

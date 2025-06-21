@@ -4,48 +4,35 @@
 
 This devcontainer provides a ready-to-use environment for editing and scripting Typst documents. It also supports development of Rust-based Typst modules. It comes pre-installed with Typst, Rust (including the wasm32-unknown-unknown target), Pandoc, and a set of extensions for both code and prose workflows. System-wide installation of all Google Fonts and the Monaspace family ensures consistent, high-quality typography for all documents, eliminating the need to manually add fonts.
 
-## Installation
 
-**The structure of this repository is designed to be most effectively used as a submodule or as a subdirectory within a larger repository or project.**
+
+## Installation
 
 ### If This Is Your Only Dev Container
 
 Add this Dev Container directly as your `.devcontainer` folder:
 
 1. Navigate to your project’s root directory.
-  
-1. Add the Dev Container as a submodule:
+
+1. Create the `.devcontainer/devcontainer.json` file with the following content:
+
    ```bash
-   git submodule add https://github.com/Accommodus/Typst-Editor-devcontainer.git .devcontainer
-   ```
-   
-1. Initialize and update the submodule:
-   ```bash
-   git submodule update --init --recursive
+   mkdir -p .devcontainer && echo '{ "image": "ghcr.io/accommodus/typst-editor-devcontainer:latest" }' > .devcontainer/devcontainer.json
    ```
 
 ### If You Want Multiple Dev Containers
 
-If you want to use more than one Dev Container in your project (for example, one for running code and this one for writing the associated paper):
+If your project needs more than one Dev Container (for example, one for code and one for writing papers), you can organize each configuration in its own subdirectory:
 
 1. Navigate to your project’s root directory.
-   
-1. `cd` into your project’s `.devcontainer` directory
-   ```bash
-   cd .devcontainer
-   ```
 
-1. Add the Dev Container as a submodule within this subdirectory:
+1. Create the `.devcontainer/typst_editor/devcontainer.json` file with the following content::
+
    ```bash
-   git submodule add https://github.com/Accommodus/Typst-Editor-devcontainer.git
+   mkdir -p .devcontainer/typst_editor/ && echo '{ "image": "ghcr.io/accommodus/typst-editor-devcontainer:latest" }' > .devcontainer/typst_editor/devcontainer.json
    ```
    
-1. Initialize and update the submodule:
-   ```bash
-   git submodule update --init --recursive
-   ```
-   
-1. When reopening the project in a remote container, select the desired Dev Container configuration from the list.
+1. When reopening the project, select the desired Dev Container configuration from the list.
 
 <a id="Font-Install"></a>
 ### If You Want to Use Monaspace Xenon in Your Editor

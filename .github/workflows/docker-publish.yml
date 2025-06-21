@@ -9,7 +9,7 @@ on:
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: typst-editor-devcontainer
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
@@ -43,8 +43,9 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-            imageName: typst-editor-devcontainer
+            imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            imageTag: latest,v1
             push: always
             platform: linux/amd64,linux/arm64 
       

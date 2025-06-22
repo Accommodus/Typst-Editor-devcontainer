@@ -4,8 +4,6 @@
 
 This devcontainer provides a ready-to-use environment for editing and scripting Typst documents. It also supports development of Rust-based Typst modules. It comes pre-installed with Typst, Rust (including the wasm32-unknown-unknown target), Pandoc, and a set of extensions for both code and prose workflows. System-wide installation of all Google Fonts and the Monaspace family ensures consistent, high-quality typography for all documents, eliminating the need to manually add fonts.
 
-
-
 ## Installation
 
 ### If This Is Your Only Dev Container

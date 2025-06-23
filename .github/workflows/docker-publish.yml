@@ -3,16 +3,13 @@ name: Create and publish a Docker image
 
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'src/**'
+  release:
+   types: [published]
 
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: typst-editor-devcontainer
+  IMAGE_NAME: accommodus/typst-editor-devcontainer
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
@@ -46,8 +43,10 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
+            subFolder: src
+            configFile: src/devcontainer.json
             imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            imageTag: latest,v1
+            imageTag: ${{ github.ref_name }}
             push: always
             platform: linux/amd64,linux/arm64 

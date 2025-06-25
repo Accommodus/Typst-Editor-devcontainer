@@ -14,6 +14,11 @@ RUN_FILE := "src/install-fonts.Dockerfile"
 
 CACHE_IMAGE := REGISTRY / REPO_NAME / "cache"
 
+[private]
+default:
+    just --list --unsorted
+
+
 [private] 
 login:
     echo $GH_TOKEN | docker login -u {{OWNER}} --password-stdin {{REGISTRY}}

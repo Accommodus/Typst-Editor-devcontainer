@@ -11,13 +11,12 @@
 			"moby": "true"
 		},
 		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/guiyomh/features/just:0": {}
+		"ghcr.io/devcontainers/features/python:1": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"hashicorp.hcl",
-				"nefrob.vscode-just-syntax"
+				"hashicorp.hcl"
 			]
 		}
 	},

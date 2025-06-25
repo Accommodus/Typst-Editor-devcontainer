@@ -1,9 +1,8 @@
 ARG BASE_IMAGE="debian:bookworm"
-ARG FONT_HOLDING_PATH="/root/typst_container"
 
 FROM ${BASE_IMAGE} AS builder
-ARG FONT_HOLDING_PATH
 ARG WORKSPACE="/root/install"
+ARG FONT_HOLDING_PATH="/root/typst_container"
 
 WORKDIR ${WORKSPACE}
 ADD https://github.com/google/fonts/archive/main.tar.gz gfonts.tar.gz

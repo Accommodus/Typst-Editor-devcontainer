@@ -1,6 +1,6 @@
-ARG BASE_IMAGE="debian:bookworm"
+ARG USE_IMAGE="debian:bookworm"
 
-FROM ${BASE_IMAGE} AS builder
+FROM ${USE_IMAGE} AS builder
 ARG WORKSPACE="/root/install"
 ARG FONT_HOLDING_PATH="/root/typst_container"
 

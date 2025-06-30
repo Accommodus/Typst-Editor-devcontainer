@@ -22,5 +22,5 @@
 			]
 		}
 	},
-	"onCreateCommand": "npm install -g @devcontainers/cli"
+	"onCreateCommand": "docker run --privileged --rm tonistiigi/binfmt --install all && npm install -g @devcontainers/cli && pip install python-on-whales requests dotenv"
 }

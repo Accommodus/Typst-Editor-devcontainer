@@ -1,7 +1,7 @@
 {
     "name": "Typst Editor",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "final.Dockerfile"
     },
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},

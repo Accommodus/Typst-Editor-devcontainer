@@ -20,7 +20,11 @@ def get_versions(
     :return:          The number of versions available for the specified container image.
     """
 
-    url = f"{api_url}/users/{owner}/packages/container/{image_name}/versions"
+    name = image_name.split("/")
+    name = name[-2:]
+    name = name[0] + "%2F" + name[1]
+
+    url = f"{api_url}/users/{owner}/packages/container/{name}/versions"
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}",
@@ -35,6 +39,7 @@ def get_versions(
     except requests.exceptions.HTTPError:
         versions = 0
 
+    print(f"Version Response for {url}: {response}")
     return versions
 
 def build_and_push_image(
@@ -75,7 +80,7 @@ def build_and_push_image(
         tags=tags,
         cache_from=cache,
         cache_to=cache,
-        push=True,
+        push=False,
         build_args=args
     )       
 
@@ -113,8 +118,21 @@ def main():
 
     docker.login(server=registry, username=owner, password=token)
 
-    #vers_and_push(api_url, owner, download_file, download_name, token)
+    vers_and_push(api_url, owner, download_file, download_name, token)
     vers_and_push(api_url, owner, install_file, install_name, token, base_image=download_name)
+
+def test():
+    load_dotenv()
+
+    token = os.getenv("GITHUB_TOKEN")
+    registry = "ghcr.io"
+    owner = os.getenv("GITHUB_REPOSITORY_OWNER", "Accommodus")
+    repo = os.getenv("GITHUB_REPOSITORY", "Accommodus/Typst-Editor-devcontainer")
+    api_url = os.getenv("GITHUB_API_URL", "https://api.github.com")
+
+    download_name = f"{registry}/{repo}/fonts-download".lower()
+    vers = get_versions(api_url, owner, download_name, token)
+    print(vers)
 
 if __name__ == "__main__":
     main()

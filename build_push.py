@@ -41,7 +41,8 @@ def build_and_push_image(
     dockerfile: str,
     image_name: str,
     vers: str,
-    platforms=["linux/amd64", "linux/arm64"]
+    platforms=["linux/amd64", "linux/arm64"],
+    base_image=None
     ) -> None:
     """
     Build and push a multi-platform Docker image using Buildx with cache support,
@@ -53,10 +54,17 @@ def build_and_push_image(
     :param platforms:    List of platforms to build for (default: ['linux/amd64', 'linux/arm64']).
     """
 
+    print(f"Pushing {image_name}:v{vers}")
+
     cache = f"{image_name}:latest"
 
     # Prepare tags
     tags = [f"{image_name}:v{vers}", f"{image_name}:latest"]
+
+    # Prepare args
+    args = {}
+    if base_image != None:
+        args = {"BASE_IMAGE": base_image}
 
     # Run the buildx build
     docker.build(
@@ -68,7 +76,7 @@ def build_and_push_image(
         cache_from=cache,
         cache_to=cache,
         push=True,
-        stream_logs=True, # stream build logs to stdout/stderr
+        build_args=args
     )       
 
 def vers_and_push(
@@ -77,13 +85,16 @@ def vers_and_push(
         dockerfile: str,
         image_name: str,
         token: str,
-        platforms=["linux/amd64", "linux/arm64"]
+        platforms=["linux/amd64", "linux/arm64"],
+        base_image=None
         ) -> None:
+    
+    print(f"Versioning {image_name}")
     
     new_version = get_versions(api_url=api_url, owner=owner, image_name=image_name, token=token) + 1
     new_version = str(new_version)
 
-    build_and_push_image(dockerfile=dockerfile, image_name=image_name, vers=new_version, platforms=platforms)
+    build_and_push_image(dockerfile=dockerfile, image_name=image_name, vers=new_version, platforms=platforms, base_image=base_image)
 
 def main():
     load_dotenv()
@@ -102,8 +113,8 @@ def main():
 
     docker.login(server=registry, username=owner, password=token)
 
-    vers_and_push(api_url, owner, download_file, download_name, token)
-    vers_and_push(api_url, owner, install_file, install_name, token)
+    #vers_and_push(api_url, owner, download_file, download_name, token)
+    vers_and_push(api_url, owner, install_file, install_name, token, base_image=download_name)
 
 if __name__ == "__main__":
     main()

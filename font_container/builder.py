@@ -81,7 +81,7 @@ class ManageImage():
         cache = f"{image_name}:cache"
 
         # Prepare tags
-        tags = [f"v{vers}", "latest"]
+        tags = [f"{image_name}:v{vers}", f"{image_name}:latest"]
 
         # Prepare args
         args = {}
@@ -97,7 +97,7 @@ class ManageImage():
             tags=tags,
             cache_from=cache,
             cache_to=cache,
-            push=False,
+            push=True,
             build_args=args
         )
 

@@ -46,6 +46,5 @@ jobs:
             imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
             cacheTo: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
-            imageTag: ${{ github.ref_name }},latest
             push: always
             platform: linux/amd64,linux/arm64 

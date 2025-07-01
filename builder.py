@@ -1,21 +1,26 @@
 import os
+import subprocess
 import requests
 from dotenv import load_dotenv
 from python_on_whales import docker
 
+
 class ManageImage():
     def __init__(self,
-                 shortname: str,
-                 dockerfile_path: str,
-                 base_image=None,
+                 shortname="install-fonts",
+                 dockerfile_path="src/install-fonts.Dockerfile",
                  registry="ghcr.io",
                  platforms=["linux/amd64", "linux/arm64"],
+                 workspace_folder="src",
+                 config="src/devcontainer.json",
                  token=None,
                  owner=None,
                  repo=None,
                  api_url=None
-                ):
-        
+                 ):
+
+        load_dotenv()
+
         if token == None:
             token = os.getenv("GITHUB_TOKEN")
 
@@ -23,18 +28,21 @@ class ManageImage():
             owner = os.getenv("GITHUB_REPOSITORY_OWNER", "Accommodus")
 
         if repo == None:
-            repo = os.getenv("GITHUB_REPOSITORY", "Accommodus/Typst-Editor-devcontainer")
+            repo = os.getenv("GITHUB_REPOSITORY",
+                             "Accommodus/Typst-Editor-devcontainer")
 
         if api_url == None:
             api_url = os.getenv("GITHUB_API_URL", "https://api.github.com")
 
-
         self.shortname = shortname
         self.dockerfile = dockerfile_path
-        self.base_image = base_image
 
         self.registry = registry
         self.platforms = platforms
+
+        self.workspace_folder = workspace_folder
+        self.config = config
+
         self.token = token
         self.owner = owner
         self.repo = repo.split("/")[1]
@@ -63,9 +71,8 @@ class ManageImage():
 
         print(f"Version Response for {url}: {response}")
         return versions
-    
 
-    def build_and_push(self) -> None:
+    def build_base(self) -> None:
         """
         Build and push a multi-platform Docker image using Buildx with cache support,
         via the python-on-whales DockerClient.
@@ -83,11 +90,6 @@ class ManageImage():
         # Prepare tags
         tags = [f"{image_name}:v{vers}", f"{image_name}:latest"]
 
-        # Prepare args
-        args = {}
-        if self.base_image != None:
-            args = {"BASE_IMAGE": self.base_image}
-
         # Run the buildx build
         docker.build(
             context_path="src",
@@ -98,14 +100,47 @@ class ManageImage():
             cache_from=cache,
             cache_to=cache,
             push=True,
-            build_args=args
         )
 
-def build_fonts_install():
-    load_dotenv(verbose=True)
+    def prebuild(self, extend=None):
+        print("Logging in...")
+        docker.login(server=self.registry, username=self.owner, password=self.token)
 
-    install = ManageImage("install-fonts", "font_container/Dockerfile")
-    install.build_and_push()
+        prebuilt_name = f"{self.registry}/{self.owner}/{self.repo}".lower()
+        if extend != None:
+            prebuilt_name += f"/{extend}".lower()
+
+        latest = f"{prebuilt_name}:latest"
+        cache = f"{prebuilt_name}:cache"
+        platforms = ",".join(self.platforms)
+
+        cmd = [
+            "devcontainer", "build",
+            "--workspace-folder", self.workspace_folder,
+            "--config", self.config,
+            "--push", "true",
+            "--image-name", latest,
+            "--cache-from", cache,
+            "--cache-to", cache,
+            "--platform", platforms
+        ]
+
+        out = subprocess.run(cmd, check=True, text=True)
+        print(out)
+
+def build_fonts_install():
+    install = ManageImage()
+    install.build_base()
+
+def prebuild():
+    install = ManageImage()
+    install.prebuild()
+
+def build_meta():
+    meta = ManageImage(workspace_folder=".devcontainer", config=".devcontainer/devcontainer.json")
+    meta.prebuild(extend="meta_container")
 
 if __name__ == "__main__":
-    build_fonts_install()
+    #build_fonts_install()
+    #prebuild()
+    build_meta()

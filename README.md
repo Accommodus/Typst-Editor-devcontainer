@@ -2,7 +2,7 @@
 
 **This editor is configured to look best with a font that is not pre-installed; see [Font Installation](#Font-Install) for details.**
 
-This devcontainer provides a ready-to-use environment for editing and scripting Typst documents. It also supports development of Rust-based Typst modules. It comes pre-installed with Typst, Rust (including the wasm32-unknown-unknown target), Pandoc, and a set of extensions for both code and prose workflows. System-wide installation of all Google Fonts and the Monaspace family ensures consistent, high-quality typography for all documents, eliminating the need to manually add fonts.
+This devcontainer provides a ready-to-use environment for editing and scripting Typst documents. It comes pre-installed with Git, Typst, Pandoc, and a set of extensions for both code and prose workflows. System-wide installation of all Google Fonts and the Monaspace family ensures consistent, high-quality typography for all documents, eliminating the need to manually add fonts.
 
 ## Installation
 
@@ -52,8 +52,6 @@ Instructions based on your operating system. [See this.](https://github.com/gith
   * [Pandoc](https://pandoc.org/): Universal document converter
   * [Git](https://git-scm.com/): Version control system
   * [Typst](https://typst.app/): Markup-based typesetting for technical documents
-  * [Rust](https://www.rust-lang.org/): Language used to compile Typst modules
-  * [wasm32-unknown-unknown](https://doc.rust-lang.org/rustc/platform-support/wasm32-unknown-unknown.html): WebAssembly compilation target for Typst modules
 
 * Fonts Installed in Container:
 
@@ -75,13 +73,3 @@ The editor settings are tailored to create an ideal environment for both scripti
 * From features
 
   * Tinymist Typst (Myriad Dreamin)
-  * CodeLLDB (Vadim Chugunov)
-  * Even Better TOML (tamasfe)
-  * rust-analyzer (The Rust Programming Language)
-
-* Manually Included
-
-  * Typst Companion (Caleb Figgers)
-  * Typst Math (Julien THILLARD)
-  * Typst Sync (OrangeX4)
-  * Code Spell Checker (Street Side Software)

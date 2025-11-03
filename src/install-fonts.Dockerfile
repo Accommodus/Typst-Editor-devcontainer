@@ -14,8 +14,8 @@ RUN mkdir -p ${FONT_HOLDING_PATH}/goog/ \
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends unzip
-ADD https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip mona.zip
-RUN unzip -j mona.zip '*.otf' '*.ttf' -d ${FONT_HOLDING_PATH}/mona/
+ADD https://github.com/githubnext/monaspace/releases/download/v1.301/monaspace-static-v1.301.zip mona.zip
+RUN unzip mona.zip -d ${FONT_HOLDING_PATH}/mona/
 
 FROM ${BASE_IMAGE}
 ARG FONT_HOLDING_PATH

@@ -136,11 +136,6 @@ def prebuild():
     install = ManageImage()
     install.prebuild()
 
-def build_meta():
-    meta = ManageImage(workspace_folder=".devcontainer", config=".devcontainer/devcontainer.json")
-    meta.prebuild(extend="meta_container")
-
 if __name__ == "__main__":
-    #build_fonts_install()
-    #prebuild()
-    build_meta()
+    build_fonts_install()
+    prebuild()

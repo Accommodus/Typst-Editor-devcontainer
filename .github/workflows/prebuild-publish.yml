@@ -1,13 +1,15 @@
-#
 name: Create and publish a prebuilt devcontainer
 
-# Configures this workflow to run every time a change is pushed to the branch called `release`.
-on: workflow_dispatch # currently set to dispatch for testing
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: accommodus/typst-editor-devcontainer
+  IMAGE_NAME: accommodus/typst-editor-devcontainer:latest
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
@@ -44,7 +46,5 @@ jobs:
             subFolder: src
             configFile: src/devcontainer.json
             imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
-            cacheTo: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
             push: always
             platform: linux/amd64,linux/arm64 
